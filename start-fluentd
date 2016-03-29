@@ -67,11 +67,6 @@ cat << EOF >> ${conf_file}
 
 <filter kubernetes.**>
   type kubernetes_metadata
-  kubernetes_url https://kubernetes.default
-  client_cert /etc/kubernetes/ssl/worker.pem
-  client_key /etc/kubernetes/ssl/worker-key.pem
-  ca_file /etc/kubernetes/ssl/ca.pem
-# bearer_token_file /var/run/secrets/kubernetes.io/serviceaccount/token
   verify_ssl true
 </filter>
 EOF
