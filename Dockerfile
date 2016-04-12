@@ -35,6 +35,7 @@ RUN /usr/sbin/td-agent-gem install fluent-plugin-systemd -v 0.0.2
 # Copy the Fluentd configuration file.
 COPY td-agent.conf /etc/td-agent/td-agent.conf
 COPY start-fluentd /start-fluentd
+RUN chmod 700 /start-fluentd
 
 # Run the Fluentd service.
 ENTRYPOINT ["/start-fluentd"]
