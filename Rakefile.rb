@@ -2,7 +2,7 @@
 @build_directory = "#{@current_dir}/build"
 @proxy = "http://webproxysea.nordstrom.net:8181"
 
-@app_name = File.basename(Dir.getwd)
+@app_name = "fluentd-aws-elasticsearch"
 @version = "1.0"
 
 def create_directory(path)

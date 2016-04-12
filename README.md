@@ -5,4 +5,3 @@ Fluentd-aws-elasticsearch collects container logs and journal logs and sends it 
 In order to enable above logs collection, mount the following paths as volumes:
     - /var/log 
     - /var/lib/docker/containers
-    - /etc/kubernetes/ssl (or path where certificates for Kubernetes API server authentication are stored)
