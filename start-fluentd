@@ -32,9 +32,10 @@ cat << EOF >> ${conf_file}
 <source>
   type systemd
   path /var/log/journal
-  pos_file docker.pos
+  pos_file systemd.pos
   read_from_head true
   strip_underscores true
+  tag systemd
 </source>
 
 <filter kubernetes.**>
