@@ -32,37 +32,9 @@ cat << EOF >> ${conf_file}
 <source>
   type systemd
   path /var/log/journal
-  filters [{ "_SYSTEMD_UNIT": "docker.service" }]
   pos_file docker.pos
-  tag docker
   read_from_head true
-</source>
-
-<source>
-  type systemd
-  path /var/log/journal
-  filters [{ "_SYSTEMD_UNIT": "etcd2.service" }]
-  pos_file etcd2.pos
-  tag etcd2
-  read_from_head true
-</source>
-
-<source>
-  type systemd
-  path /var/log/journal
-  filters [{ "_SYSTEMD_UNIT": "kubelet.service" }]
-  pos_file kubelet.pos
-  tag kubelet
-  read_from_head true
-</source>
-
-<source>
-  type systemd
-  path /var/log/journal
-  filters [{ "_SYSTEMD_UNIT": "flanneld.service" }]
-  pos_file flanneld.pos
-  tag flanneld
-  read_from_head true
+  strip_underscores true
 </source>
 
 <filter kubernetes.**>
