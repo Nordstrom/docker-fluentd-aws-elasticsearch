@@ -10,6 +10,7 @@ FLUENTD_BUFFER_QUEUE_LIMIT=${FLUENTD_BUFFER_QUEUE_LIMIT:-8192}
 FLUENTD_BUFFER_TYPE=${FLUENTD_BUFFER_TYPE:-memory}
 FLUENTD_BUFFER_PATH=${FLUENTD_BUFFER_PATH:-/var/fluentd/buffer}
 FLUENTD_LOGSTASH_PREFIX=${FLUENTD_LOGSTASH_PREFIX:-logstash}
+FLUENTD_RELOAD_CONNECTIONS=${FLUENTD_RELOAD_CONNECTIONS:-false}
 
 conf_file=/etc/td-agent/td-agent.conf
 
@@ -34,7 +35,7 @@ cat << EOF >> ${conf_file}
   path /var/log/journal
   pos_file /var/log/systemd.pos
   tag systemd
-  filters [{ "PRIORITY": [0 to 5] }]
+  filters [{ "PRIORITY": [0,1,2,3,4,5,6] }]
   read_from_head true
   strip_underscores true
 </source>
@@ -66,7 +67,7 @@ cat << EOF >> ${conf_file}
   retry_wait ${FLUENTD_RETRY_WAIT}
   max_retry_wait ${FLUENTD_MAX_RETRY_WAIT}
   num_threads ${FLUENTD_FLUSH_THREADS}
-  reload_connections false
+  reload_connections ${FLUENTD_RELOAD_CONNECTIONS}
   resurrect_after 5
   <endpoint>
     url ${AWS_ELASTICSEARCH_ENDPOINT}
