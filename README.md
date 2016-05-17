@@ -7,5 +7,7 @@ In order to enable above logs collection, mount the following paths as volumes:
     - /var/lib/docker/containers
 
 Refer the following links for reference:
-    - [docker-fluentd-kubernetes] (https://github.com/fabric8io/docker-fluentd-kubernetes) 
+    - [docker-fluentd-kubernetes] (https://github.com/fabric8io/docker-fluentd-kubernetes)
+    - [fluent-plugin-kubernetes_metadata_filter] (https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter) 
+    - [fluent-plugin-aws-elasticsearch-service] (https://github.com/atomita/fluent-plugin-aws-elasticsearch-service)
     - [fluent-plugin-systemd] (https://github.com/reevoo/fluent-plugin-systemd)
