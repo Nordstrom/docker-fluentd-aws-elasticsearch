@@ -37,10 +37,13 @@ RUN /usr/sbin/td-agent-gem install fluent-plugin-systemd -v 0.0.2 --no-ri --no-r
 # Copy the Fluentd configuration file.
 COPY td-agent.conf /etc/td-agent/td-agent.conf
 COPY start-fluentd /start-fluentd
-RUN chmod 744 /etc/td-agent/td-agent.conf
-RUN chmod +x /start-fluentd
+RUN chmod 766 /etc/td-agent/td-agent.conf && \
+    chmod +x /start-fluentd
 
-USER ubuntu
+# Create directory for pos files and assign write permission to it
+ENV POS_FILE_LOCATION /var/log
+RUN mkdir -p ${POS_FILE_LOCATION}
+RUN chmod 766 ${POS_FILE_LOCATION}
 
 # Run the Fluentd service.
 ENTRYPOINT ["/start-fluentd"]

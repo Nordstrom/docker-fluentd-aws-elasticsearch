@@ -23,7 +23,7 @@ cat << EOF >> ${conf_file}
 <source>
   type tail
   path /var/log/containers/*.log
-  pos_file /var/log/es-containers.log.pos
+  pos_file ${POS_FILE_LOCATION}/es-containers.log.pos
   time_format %Y-%m-%dT%H:%M:%S
   tag kubernetes.*
   format json
@@ -33,7 +33,7 @@ cat << EOF >> ${conf_file}
 <source>
   type systemd
   path /var/log/journal
-  pos_file /var/log/systemd.pos
+  pos_file ${POS_FILE_LOCATION}/systemd.pos
   tag systemd
   filters [{ "PRIORITY": [0,1,2,3,4,5,6] }]
   read_from_head true
