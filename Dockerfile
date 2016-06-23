@@ -1,5 +1,7 @@
-FROM nordstrom/baseimage-ubuntu:16.04
+FROM quay.io/nordstrom/baseimage-ubuntu:16.04
 MAINTAINER Innovation Platform Team "invcldtm@nordstrom.com"
+
+USER root 
 
 # Ensure there are enough file descriptors for running Fluentd.
 RUN ulimit -n 65536
@@ -35,7 +37,10 @@ RUN /usr/sbin/td-agent-gem install fluent-plugin-systemd -v 0.0.2 --no-ri --no-r
 # Copy the Fluentd configuration file.
 COPY td-agent.conf /etc/td-agent/td-agent.conf
 COPY start-fluentd /start-fluentd
-RUN chmod 700 /start-fluentd
+RUN chmod 744 /etc/td-agent/td-agent.conf
+RUN chmod +x /start-fluentd
+
+USER ubuntu
 
 # Run the Fluentd service.
 ENTRYPOINT ["/start-fluentd"]
