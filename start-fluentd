@@ -40,6 +40,15 @@ cat << EOF >> ${conf_file}
   strip_underscores true
 </source>
 
+<source>
+  type tail
+  path /var/log/apiserver/*.log
+  pos_file ${POS_FILE_LOCATION}/auditlog.pos
+  tag auditlog
+  format none
+  read_from_head true
+</source>
+
 <filter kubernetes.**>
   type kubernetes_metadata
   verify_ssl true

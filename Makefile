@@ -1,6 +1,6 @@
 container_name := fluentd-aws-elasticsearch
 container_registry := quay.io/nordstrom
-container_release := 1.2
+container_release := 1.3
 
 .PHONY: build/image tag/image push/image
 
